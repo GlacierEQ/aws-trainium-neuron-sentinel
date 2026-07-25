@@ -1,0 +1,9 @@
+{
+  "system_id": "aws-trainium-neuron-sentinel",
+  "shadow_mode": "ACTIVE",
+  "mastermind_synced": true,
+  "telemetry": {
+    "s3_express_latency_ms": 1.2,
+    "status": "NEURON_PIPELINE_OPTIMAL"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "repo": "aws-trainium-neuron-sentinel",
+  "algorithm": "sha256",
+  "file_count": 9,
+  "hashes": {
+    "README.md": "0f7c7451095bbbb7d811417916b5e03e349f28ce9eb25ad6e4c4ee9411f3e83b",
+    "AKOS.md": "fd63484bac9442aa91fb0db59e37cc612a8fbcd4f6f0ddfeb4db6f00d0bd5011",
+    "AGENTS.md": "03ea2fcaa4b344d142dbcbee50a5ad1f9bb847d3790a9e3297d7ff9c708d3757",
+    "HELIX_STRAND.md": "e3b732d000604a4b5b762096159ecbc074ef5a77d8c8e4cfe853debf0ce33759",
+    "mastermind_sidecar.py": "f5608e0c2d53e00cedebceca50662bf2db273e7b0db971be3afb04f752c10b08",
+    "SECURITY_AND_FLEET_OPS.md": "26141c0f07d95847d679de423ddb7bdee6f3e319d204383c89a58d6d3bb610c7",
+    "HELIX.md": "9d8b12b4fbb486e92868f300b89ad7db74684ae33cfb1df88bf126d5a7ee76b8",
+    "tests/test_aws.py": "5827d573555587e9a2485577fdfaa922849539b55ac91239d86de0a65e26b736",
+    "src/aws_trainium_neuron_sentinel.py": "fd6b089fe95d8cad99874853c98b69ed93fbb82babe0355d00839c8ef38d54d2"
+  }
+}

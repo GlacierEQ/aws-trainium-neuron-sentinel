@@ -1,26 +1,49 @@
-# AWS Trainium Neuron Sentinel
+# AWS Trainium Neuron Sentinel — AWS NPU Acceleration Sentinel ☁️
 
-> **Production Solution for Trainium2/Inferentia2 NeuronCore Ring Topology Stalls**
+> **Performance monitor and compiler sentinel for AWS Trainium (Trn1) and Inferentia (Inf2) Neuron NPUs.**
 
-## Overview
-NeuronCore matrix engine ring pipeline bubble eliminator and S3 Express One Zone KV-streaming buffer.
-
-## Verification
-```bash
-PYTHONPATH=src python3 tests/test_aws.py
-python3 mastermind_sidecar.py
-```
+[![C++](https://img.shields.io/badge/C++-17-00599C)]()
+[![Python](https://img.shields.io/badge/Python-3.9+-blue)]()
+[![Domain](https://img.shields.io/badge/Domain-AWS%20Neuron%20NPU-orange)]()
 
 ---
 
-## Fleet ops (transparent)
+## 🎯 For Recruiters & Hiring Managers
 
-This repo may include **`.integrity/`** (SHA-256 baselines / watchdog) and/or a health sidecar.
-These are **documented multi-repo fleet operations**, not covert implants.
+This repository implements a **sentinel and compiler optimization suite for AWS Trainium & Inferentia** — maximizing throughput on AWS custom AI chips. It demonstrates:
 
-See [SECURITY_AND_FLEET_OPS.md](SECURITY_AND_FLEET_OPS.md) and
-`~/GlacierEQ_Swarm/state/PORTFOLIO_SHADOW_AND_GAUNTLET.md`.
+- **Neuron Core utilization profiling** tracking execution latency and memory bandwidth
+- **C++ memory allocator optimization** for Neuron persistent memory
+- **Graph compilation tuning** for AWS Neuron Compiler (`neuronx-cc`)
+- **Multi-NPU collective communication** monitoring across Trn1 architecture
 
-## Helix strand
+**Why this matters**: As cloud providers deploy custom AI accelerators (Trainium, Inferentia), engineering teams must optimize software specifically for non-NVIDIA silicon to reduce cloud compute costs by 50%+.
 
-See [HELIX_STRAND.md](HELIX_STRAND.md) — piston/spiral role in the portfolio double helix.
+---
+
+## 🔬 For Engineers & Technical Reviewers
+
+### Core Components
+
+| Component | Language | Purpose |
+|---|---|---|
+| `src/neuron_sentinel.cpp` | C++ | Low-overhead C++ Neuron Core execution profiler |
+| `src/neuron_monitor.py` | Python | High-level compiler wrapper and telemetry aggregator |
+| `tests/` | Python | NPU throughput and latency benchmarks |
+
+---
+
+## 🤖 ML/AI & Programmatic Mesh Integration
+
+- **MCP Tool**: `aws_npu_health()` — NPU telemetry queryable by swarm agents
+- **Mastermind Sidecar**: Connected to APEX Highway mesh
+- **SHA-256 Integrity**: Tracked in `.integrity/file_hashes.json`
+
+---
+
+## ⚡ Quick Start
+
+```bash
+python3 src/neuron_monitor.py
+python3 tests/test_neuron.py
+```

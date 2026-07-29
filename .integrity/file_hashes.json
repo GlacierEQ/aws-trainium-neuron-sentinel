@@ -1,5 +1,5 @@
 {
-  "file_count": 11,
+  "file_count": 12,
   "hashes": {
     "AGENTS.md": "03ea2fcaa4b344d142dbcbee50a5ad1f9bb847d3790a9e3297d7ff9c708d3757",
     "AKOS.md": "fd63484bac9442aa91fb0db59e37cc612a8fbcd4f6f0ddfeb4db6f00d0bd5011",
@@ -9,6 +9,7 @@
     "SECURITY_AND_FLEET_OPS.md": "26141c0f07d95847d679de423ddb7bdee6f3e319d204383c89a58d6d3bb610c7",
     "mastermind_sidecar.py": "f5608e0c2d53e00cedebceca50662bf2db273e7b0db971be3afb04f752c10b08",
     "src/aws_trainium_neuron_sentinel.py": "fd6b089fe95d8cad99874853c98b69ed93fbb82babe0355d00839c8ef38d54d2",
+    "src/neuron_allocator.cpp": "29d212f7bf49d274abac3e33183fc7184eedfb66ffd7775456b640aaa80f82fc",
     "src/neuron_executor.cpp": "b06cbce2da9d8a9604f52ee5d69423349b488db8019cc2350db3926e027b4d4f",
     "tests/test_aws.py": "5827d573555587e9a2485577fdfaa922849539b55ac91239d86de0a65e26b736",
     "tests/test_neuron.py": "ec1420e34839ceb2468b8c9c1febaf0211da14a07bc2c94f3e21816333978185"

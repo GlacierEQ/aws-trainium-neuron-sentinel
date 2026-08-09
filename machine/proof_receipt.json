@@ -1,0 +1,31 @@
+{
+  "schema": "glaciereq.proof-receipt.v1",
+  "repository": "GlacierEQ/aws-trainium-neuron-sentinel",
+  "source_sha": "39f99cc0f9a88071ddd9615ff789128d771f450a2da65ad8f72624987fbdcd6a",
+  "proof_id": "wave-b-aws-trainium-neuron-sentinel-1786315039",
+  "environment": {
+    "python": "3.9.6",
+    "PYTHONPATH": "."
+  },
+  "tests": [
+    "PYTHONPATH=. python3 -m unittest discover -s tests -v (x2)"
+  ],
+  "adversarial_tests": [
+    "tests/test_adversarial.py"
+  ],
+  "runtime": {
+    "operate": "scripts/operate.py (x2)",
+    "dual_run_ok": true,
+    "proof_dual_run_ok": true
+  },
+  "result": "PASS",
+  "limitations": [
+    "not production deployed",
+    "reference implementation only"
+  ],
+  "timestamp": "2026-08-09T22:37Z",
+  "artifact_hashes": {
+    "operability_receipt": "bcb80e013d4db0784b7424ebb7bc372141d69009184b56e1ea9a8568804da8a2"
+  },
+  "scratch_proof_log": "wave_b/aws-trainium-neuron-sentinel/proof.log"
+}

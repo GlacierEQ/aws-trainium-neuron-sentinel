@@ -1,16 +1,20 @@
 {
   "schema": "glaciereq.operability-receipt.v1",
   "repository": "GlacierEQ/aws-trainium-neuron-sentinel",
-  "at": "2026-08-09T22:37Z",
-  "source_sha": "39f99cc0f9a88071ddd9615ff789128d771f450a2da65ad8f72624987fbdcd6a",
+  "at": "2026-08-09T22:57Z",
+  "source_sha": "37c9ba5e3f6a962bcb9da3aab932a02ee1a3e3191e22288cbe6115773b9a1cbe",
+  "source_sha_algorithm": "sha256(newline_join('{rel}:{sha256(bytes)}' for src|scripts|tests .py/.md/.json))",
   "entry": "scripts/operate.py",
   "primary_output": {
     "expected_status": "NEURON_PIPELINE_OPTIMAL",
+    "expected_throughput_tokens_per_sec": 6990506666.7,
+    "expected_tokens_per_core": 131072.0,
     "fingerprint": "2fbd3c8b6b1fc34ff50a675a930d981ec82abdc1a30b819647173a151a41e7e4",
     "ok": true,
     "status": "NEURON_PIPELINE_OPTIMAL",
     "throughput_tokens_per_sec": 6990506666.7,
-    "tokens_per_core": 131072.0
+    "tokens_per_core": 131072.0,
+    "tokens_total": 8388608
   },
   "dual_run_ok": true,
   "result": "PASS",

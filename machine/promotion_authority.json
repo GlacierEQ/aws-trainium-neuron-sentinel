@@ -1,10 +1,12 @@
 {
   "schema": "glaciereq.promotion-authority-grant.v1",
   "repository": "GlacierEQ/aws-trainium-neuron-sentinel",
-  "source_sha": "39f99cc0f9a88071ddd9615ff789128d771f450a2da65ad8f72624987fbdcd6a",
-  "proof_receipt_digest": "69f73df998fc04a21b171341e6c6b4016139142abba3bdb98d44e78588bf009e",
-  "not_after": 1786401439.758687,
-  "mac": "1da44ae63e8e32457b495cdf16e49f54002adff8db58e6700e3d8e150477e647",
+  "source_sha": "37c9ba5e3f6a962bcb9da3aab932a02ee1a3e3191e22288cbe6115773b9a1cbe",
+  "proof_receipt_digest": "609a5a5c7cfcf41d62602105522c20c380bab24367ad9a79298875f270d23a6c",
+  "not_after": 1788908261.7824872,
+  "mac": "a02eba4c4e852c6714501a5fd82eb7836fda97d05e9b381c6b512306c92cb33e",
   "issuer": "local_operator_promotion_authority",
-  "verified": true
+  "verified": true,
+  "verification_procedure": "LOCAL reference authority only. Secret constant: src/promotion_authority.py::LOCAL_OPERATOR_SECRET (= b'glaciereq-local-operator-promotion-authority-v1'). Verify: python3 scripts/verify_promotion_grant.py",
+  "secret_ref": "src/promotion_authority.py::LOCAL_OPERATOR_SECRET"
 }

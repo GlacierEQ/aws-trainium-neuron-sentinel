@@ -1,49 +1,58 @@
-# AWS Trainium Neuron Sentinel — AWS NPU Acceleration Sentinel ☁️
+# AWS Trainium Neuron Sentinel
 
-> **Performance monitor and compiler sentinel for AWS Trainium (Trn1) and Inferentia (Inf2) Neuron NPUs.**
+**Independent local accelerator-scenario exhibit inspired by public AWS Trainium/Inferentia concepts.**
 
-[![C++](https://img.shields.io/badge/C++-17-00599C)]()
-[![Python](https://img.shields.io/badge/Python-3.9+-blue)]()
-[![Domain](https://img.shields.io/badge/Domain-AWS%20Neuron%20NPU-orange)]()
+This repository is **not affiliated with, endorsed by, or operated by Amazon Web Services**. It does not establish access to AWS Neuron hardware, `neuronx-cc`, S3 Express telemetry, production Trainium/Inferentia systems, or proprietary AWS infrastructure.
 
----
+## Current capability
 
-## 🎯 For Recruiters & Hiring Managers
+The canonical Python surface is [`src/aws_trainium_neuron_sentinel.py`](src/aws_trainium_neuron_sentinel.py). It deterministically models:
 
-This repository implements a **sentinel and compiler optimization suite for AWS Trainium & Inferentia** — maximizing throughput on AWS custom AI chips. It demonstrates:
+- token partitioning across an explicit accelerator-core-count assumption;
+- a simple pipeline-bubble heuristic derived from that core-count assumption;
+- a latency-only throughput upper bound from an explicit latency assumption;
+- SHA-256 fingerprints over the modeled result;
+- fail-closed validation for invalid counts and non-finite latency assumptions.
 
-- **Neuron Core utilization profiling** tracking execution latency and memory bandwidth
-- **C++ memory allocator optimization** for Neuron persistent memory
-- **Graph compilation tuning** for AWS Neuron Compiler (`neuronx-cc`)
-- **Multi-NPU collective communication** monitoring across Trn1 architecture
+Every modeled result emits:
 
-**Why this matters**: As cloud providers deploy custom AI accelerators (Trainium, Inferentia), engineering teams must optimize software specifically for non-NVIDIA silicon to reduce cloud compute costs by 50%+.
+`MODELED_TRAINIUM_SCENARIO_NOT_AWS_HARDWARE_MEASUREMENT`
 
----
+The historical `optimize_neuron_pipeline()` method remains as a compatibility alias, but it returns the same bounded scenario model; it is not a hardware optimizer.
 
-## 🔬 For Engineers & Technical Reviewers
+## Other repository surfaces
 
-### Core Components
-
-| Component | Language | Purpose |
+| Surface | What it proves | What it does not prove |
 |---|---|---|
-| `src/neuron_sentinel.cpp` | C++ | Low-overhead C++ Neuron Core execution profiler |
-| `src/neuron_monitor.py` | Python | High-level compiler wrapper and telemetry aggregator |
-| `tests/` | Python | NPU throughput and latency benchmarks |
+| `src/aws_trainium_neuron_sentinel.py` | deterministic local scenario arithmetic | AWS Neuron execution or measured performance |
+| `src/neuron_allocator.cpp` | local C++ allocation/accounting reference code | Neuron persistent-memory allocation |
+| `src/neuron_executor.cpp` | local arithmetic/reference C++ code | Trainium model execution |
+| `src/promotion_authority.py` | local promotion/receipt authority logic | AWS deployment authority |
+| `tests/` | repository-local regression and authority checks | production AWS benchmarking |
 
----
-
-## 🤖 ML/AI & Programmatic Mesh Integration
-
-- **MCP Tool**: `aws_npu_health()` — NPU telemetry queryable by swarm agents
-- **Mastermind Sidecar**: Connected to APEX Highway mesh
-- **SHA-256 Integrity**: Tracked in `.integrity/file_hashes.json`
-
----
-
-## ⚡ Quick Start
+## Native proof
 
 ```bash
-python3 src/neuron_monitor.py
-python3 tests/test_neuron.py
+python -m unittest discover -s tests -p 'test_*.py' -v
+g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_allocator.cpp -o /tmp/neuron_allocator.o
+g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_executor.cpp -o /tmp/neuron_executor.o
 ```
+
+The repository truth gate runs the Python suite and compiles both C++ reference sources on the exact pull-request or push Git head. A green workflow is evidence for that exact source identity only.
+
+## Evidence boundary
+
+This repository does **not** claim:
+
+- Trainium/Inferentia hardware access or execution;
+- Neuron Core utilization telemetry;
+- `neuronx-cc` graph compilation;
+- S3 Express measurements;
+- measured NPU throughput, latency, memory bandwidth, cost reduction, or model accuracy;
+- multi-node/NPU collective communication;
+- live MCP/APEX integration;
+- AWS affiliation, endorsement, employment, production operation, or proprietary access.
+
+## Portfolio role
+
+The useful transferable capability is **deterministic accelerator-topology scenario modeling plus evidence-bound promotion logic**, not an assertion that this repository operates AWS infrastructure.

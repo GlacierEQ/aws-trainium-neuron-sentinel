@@ -1,0 +1,56 @@
+name: Public Truth Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact source identity
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch --no-tags origin "${{ github.event.pull_request.base.sha }}"
+            git merge-base --is-ancestor "${{ github.event.pull_request.base.sha }}" HEAD
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile Python surfaces
+        run: python -m compileall -q src tests
+
+      - name: Run deterministic repository proof
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Compile C++ reference surfaces
+        run: |
+          g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_allocator.cpp -o /tmp/neuron_allocator.o
+          g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_executor.cpp -o /tmp/neuron_executor.o
+
+      - name: Verify public truth boundary
+        run: |
+          grep -q 'MODELED_TRAINIUM_SCENARIO_NOT_AWS_HARDWARE_MEASUREMENT' README.md
+          grep -q 'MODELED_TRAINIUM_SCENARIO_NOT_AWS_HARDWARE_MEASUREMENT' src/aws_trainium_neuron_sentinel.py
+          grep -q 'not affiliated with, endorsed by, or operated by Amazon Web Services' README.md
+          ! grep -q 'NEURON_PIPELINE_OPTIMAL' src/aws_trainium_neuron_sentinel.py

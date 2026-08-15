@@ -5,19 +5,23 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   verify:
+    name: verify (${{ matrix.python-version }})
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.11", "3.13"]
+        python-version: ["3.11", "3.12", "3.13"]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout exact source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -33,12 +37,13 @@ jobs:
             git merge-base --is-ancestor "${{ github.event.pull_request.base.sha }}" HEAD
           fi
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Compile Python surfaces
-        run: python -m compileall -q src tests
+        run: python -m compileall -q src tests scripts
 
       - name: Run deterministic repository proof
         run: python -m unittest discover -s tests -p 'test_*.py' -v
@@ -48,9 +53,5 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_allocator.cpp -o /tmp/neuron_allocator.o
           g++ -std=c++17 -Wall -Wextra -pedantic -c src/neuron_executor.cpp -o /tmp/neuron_executor.o
 
-      - name: Verify public truth boundary
-        run: |
-          grep -q 'MODELED_TRAINIUM_SCENARIO_NOT_AWS_HARDWARE_MEASUREMENT' README.md
-          grep -q 'MODELED_TRAINIUM_SCENARIO_NOT_AWS_HARDWARE_MEASUREMENT' src/aws_trainium_neuron_sentinel.py
-          grep -q 'not affiliated with, endorsed by, or operated by Amazon Web Services' README.md
-          ! grep -q 'NEURON_PIPELINE_OPTIMAL' src/aws_trainium_neuron_sentinel.py
+      - name: Verify public and machine truth boundary
+        run: python scripts/verify_public_truth.py

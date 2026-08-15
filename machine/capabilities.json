@@ -1,1 +1,16 @@
-{"capabilities": ["hyper-scaling"]}
+{
+  "schema": "glaciereq.bounded-capabilities.v1",
+  "capabilities": [
+    "deterministic-accelerator-core-token-partitioning-model",
+    "modeled-pipeline-bubble-heuristic",
+    "explicit-latency-throughput-upper-bound-estimation",
+    "stable-sha256-modeled-result-fingerprints",
+    "strict-cpp17-reference-surface-compilation"
+  ],
+  "operational_authority": false,
+  "aws_neuron_hardware_measurement": false,
+  "neuronx_cc_execution": false,
+  "trainium_inferentia_model_execution": false,
+  "s3_express_measurement": false,
+  "live_mcp_apex_integration": false
+}

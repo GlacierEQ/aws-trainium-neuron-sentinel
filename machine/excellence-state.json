@@ -55,5 +55,9 @@
     "promotion_receipts_are_non_authoritative_for_current_head": true,
     "placeholder_hyper_validated_identity_is_not_current_proof": true
   },
+  "promotion_authority": {
+    "status": "RETIRED_KEYLESS",
+    "reason": "Repository progression is not gated by a source-default or externally supplied promotion secret."
+  },
   "evolution_cursor": "fresh_exact_head_ci_then_surface_reconciliation_refresh"
 }

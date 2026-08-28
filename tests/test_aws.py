@@ -1,4 +1,5 @@
 """Regression tests for the bounded Trainium scenario model."""
+
 from __future__ import annotations
 
 import unittest
@@ -8,12 +9,8 @@ from src.aws_trainium_neuron_sentinel import AWSTrainiumNeuronSentinel
 
 class TestAWSTrainiumNeuronSentinel(unittest.TestCase):
     def test_neuron_pipeline_scenario(self) -> None:
-        sentinel = AWSTrainiumNeuronSentinel(
-            neuron_cores=64, s3_express_latency_ms=1.2
-        )
-        result = sentinel.model_neuron_pipeline(
-            batch_size=256, sequence_length=32768
-        )
+        sentinel = AWSTrainiumNeuronSentinel(neuron_cores=64, s3_express_latency_ms=1.2)
+        result = sentinel.model_neuron_pipeline(batch_size=256, sequence_length=32768)
 
         self.assertEqual(
             result["evidence_state"],

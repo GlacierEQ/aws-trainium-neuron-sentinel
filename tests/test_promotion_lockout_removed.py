@@ -24,4 +24,7 @@ def test_modeled_accelerator_evidence_remains_keyless() -> None:
     assert proof["repository"] == "GlacierEQ/aws-trainium-neuron-sentinel"
     assert proof["source_sha"]
     assert state["promotion_authority"]["status"] == "RETIRED_KEYLESS"
-    assert "no Trainium or Inferentia hardware execution or measurement" in state["nonclaims"]
+    assert (
+        "no Trainium or Inferentia hardware execution or measurement"
+        in state["nonclaims"]
+    )

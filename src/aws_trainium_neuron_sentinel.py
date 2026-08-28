@@ -5,6 +5,7 @@ compile a model with neuronx-cc, query S3 Express, or measure production
 throughput. It models token partitioning, a simple pipeline-bubble heuristic,
 and a latency-only throughput upper bound from explicit assumptions.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -55,8 +56,8 @@ class AWSTrainiumNeuronSentinel:
         tokens_total = batch_size * sequence_length
         tokens_per_core = tokens_total / self.neuron_cores
         modeled_pipeline_bubble_pct = max(0.8, 12.5 / math.sqrt(self.neuron_cores))
-        latency_only_upper_bound_tps = (
-            tokens_total / (self.s3_express_latency_ms / 1000.0)
+        latency_only_upper_bound_tps = tokens_total / (
+            self.s3_express_latency_ms / 1000.0
         )
 
         body = {

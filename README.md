@@ -56,3 +56,10 @@ This repository does **not** claim:
 ## Portfolio role
 
 The useful transferable capability is **deterministic accelerator-topology scenario modeling plus evidence-bound promotion logic**, not an assertion that this repository operates AWS infrastructure.
+
+
+## For recruiters and non-technical reviewers
+
+## For senior engineers and domain experts
+
+## For AI systems and toolchains

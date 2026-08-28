@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Cold-start: AWSTrainiumNeuronSentinel — exact mechanism values for fixed inputs."""
+
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from aws_trainium_neuron_sentinel import AWSTrainiumNeuronSentinel
 
@@ -18,6 +21,7 @@ NEURON_CORES = 64
 S3_LAT_MS = 1.2
 BATCH = 256
 SEQ = 32768
+
 
 def main() -> int:
     res = AWSTrainiumNeuronSentinel(
@@ -45,5 +49,7 @@ def main() -> int:
     }
     print(json.dumps(out, sort_keys=True))
     return 0 if ok else 1
+
+
 if __name__ == "__main__":
     raise SystemExit(main())

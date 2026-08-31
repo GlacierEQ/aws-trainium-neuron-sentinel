@@ -5,18 +5,31 @@
     "family": "elite-estate"
   },
   "current": {
-    "state": "PROMOTED",
+    "state": "FUNCTIONAL_CANDIDATE",
     "implemented": true,
-    "tested": true,
-    "deployed": false
+    "tested_in_source": true,
+    "deployed": false,
+    "operational_authority": false
   },
   "nonclaims": [
-    "no employer affiliation",
+    "no AWS affiliation, endorsement, employment, proprietary access, account authority, or API access",
+    "no Trainium or Inferentia hardware execution or measurement",
+    "no neuronx-cc graph compilation or S3 Express measurement",
+    "scope passports perform no AWS API calls and grant no cloud authority",
     "no production deployment without receipt"
   ],
   "donor_plan": {
     "mode": "none",
     "donors": []
   },
-  "frozen_at": "2026-08-10T04:12Z"
+  "frozen_at": "2026-08-10T04:12Z",
+  "verified_scope": [
+    "deterministic accelerator-core token-partitioning model",
+    "modeled pipeline-bubble and latency-only upper-bound arithmetic",
+    "strict C++17 local reference-surface compilation",
+    "hash-bound modeled workload passport",
+    "explicit account-alias and region scope binding with replay refusal",
+    "optional parent-receipt provenance chain"
+  ],
+  "next_gate": "exact-current-head Python 3.11/3.12/3.13 and C++ public-truth proof including workload passport tests"
 }

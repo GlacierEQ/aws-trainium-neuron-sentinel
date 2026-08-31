@@ -20,11 +20,22 @@ Every modeled result emits:
 
 The historical `optimize_neuron_pipeline()` method remains as a compatibility alias, but it returns the same bounded scenario model; it is not a hardware optimizer.
 
+## Modeled workload provenance passport
+
+`src/workload_passport.py` adds a scope-bound provenance layer around modeled accelerator work.
+
+`LOCAL_SCOPE_PASSPORT_NOT_AWS_ACCOUNT_OR_HARDWARE_AUTHORITY`
+
+Each passport binds the modeled scenario and its assumptions to an exact source identity plus a declared account alias, region, accelerator family, and workload ID. The receipt can link to a predecessor and is SHA-256 integrity checked. A passport cannot be replayed across a different declared account alias or region: **cross-account or cross-region replay** fails closed.
+
+This is a local provenance and scope contract. It performs no AWS API call, does not authenticate an AWS account, and grants no Trainium/Inferentia or cloud authority.
+
 ## Other repository surfaces
 
 | Surface | What it proves | What it does not prove |
 |---|---|---|
 | `src/aws_trainium_neuron_sentinel.py` | deterministic local scenario arithmetic | AWS Neuron execution or measured performance |
+| `src/workload_passport.py` | source/account-alias/region/assumption provenance binding and replay refusal | AWS identity, account authorization, API execution, or cloud deployment |
 | `src/neuron_allocator.cpp` | local C++ allocation/accounting reference code | Neuron persistent-memory allocation |
 | `src/neuron_executor.cpp` | local arithmetic/reference C++ code | Trainium model execution |
 | `src/promotion_authority.py` | local promotion/receipt authority logic | AWS deployment authority |

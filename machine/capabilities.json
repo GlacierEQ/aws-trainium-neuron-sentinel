@@ -5,12 +5,16 @@
     "modeled-pipeline-bubble-heuristic",
     "explicit-latency-throughput-upper-bound-estimation",
     "stable-sha256-modeled-result-fingerprints",
-    "strict-cpp17-reference-surface-compilation"
+    "strict-cpp17-reference-surface-compilation",
+    "hash-bound-modeled-workload-passport",
+    "account-region-scope-replay-refusal",
+    "parent-linked-workload-provenance"
   ],
   "operational_authority": false,
   "aws_neuron_hardware_measurement": false,
   "neuronx_cc_execution": false,
   "trainium_inferentia_model_execution": false,
   "s3_express_measurement": false,
-  "live_mcp_apex_integration": false
+  "live_mcp_apex_integration": false,
+  "scope_passport_evidence_state": "LOCAL_SCOPE_PASSPORT_NOT_AWS_ACCOUNT_OR_HARDWARE_AUTHORITY"
 }

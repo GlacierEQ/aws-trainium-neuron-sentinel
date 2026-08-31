@@ -9,7 +9,10 @@
     "modeled-pipeline-bubble-heuristic",
     "explicit-latency-throughput-upper-bound-estimation",
     "stable-sha256-modeled-result-fingerprints",
-    "strict-cpp17-reference-surface-compilation"
+    "strict-cpp17-reference-surface-compilation",
+    "hash-bound-modeled-workload-passport",
+    "account-region-scope-replay-refusal",
+    "parent-linked-workload-provenance"
   ],
   "gates": {
     "IDENTITY_RESOLVED": {
@@ -18,7 +21,7 @@
     },
     "CENTRAL_MECHANISM_PRESENT": {
       "status": "PASS",
-      "evidence": "src/aws_trainium_neuron_sentinel.py plus local C++ reference surfaces"
+      "evidence": "src/aws_trainium_neuron_sentinel.py + src/workload_passport.py + local C++ reference surfaces"
     },
     "PRIOR_EXACT_HEAD_PROOF": {
       "status": "PASS",
@@ -35,7 +38,7 @@
     },
     "DETERMINISTIC_PROOF_GREEN": {
       "status": "PENDING_CANONICAL_CI",
-      "evidence": "machine-state and proof-matrix changes require fresh exact-current-head canonical proof"
+      "evidence": "current scenario model and scope-passport extension require fresh exact-current-head canonical proof"
     },
     "CANONICAL_POSITION_RESOLVED": {
       "status": "PENDING"
@@ -59,5 +62,10 @@
     "status": "RETIRED_KEYLESS",
     "reason": "Repository progression is not gated by a source-default or externally supplied promotion secret."
   },
-  "evolution_cursor": "fresh_exact_head_ci_then_surface_reconciliation_refresh"
+  "evolution_cursor": "fresh_exact_head_ci_then_surface_reconciliation_refresh",
+  "current_head_extension": {
+    "mechanism": "src/workload_passport.py",
+    "tests": "tests/test_workload_passport.py",
+    "state": "IMPLEMENTED_CURRENT_HEAD_NATIVE_PROOF_REQUIRED"
+  }
 }

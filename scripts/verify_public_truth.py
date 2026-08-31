@@ -39,6 +39,14 @@ def main() -> None:
         "does not establish access to AWS Neuron hardware" in normalized,
         "AWS hardware-access boundary missing",
     )
+    require(
+        "LOCAL_SCOPE_PASSPORT_NOT_AWS_ACCOUNT_OR_HARDWARE_AUTHORITY" in readme,
+        "scope-passport evidence token missing",
+    )
+    require(
+        "cross-account or cross-region replay" in normalized,
+        "scope replay boundary missing",
+    )
 
     allowed = {
         "deterministic-accelerator-core-token-partitioning-model",
@@ -46,6 +54,9 @@ def main() -> None:
         "explicit-latency-throughput-upper-bound-estimation",
         "stable-sha256-modeled-result-fingerprints",
         "strict-cpp17-reference-surface-compilation",
+        "hash-bound-modeled-workload-passport",
+        "account-region-scope-replay-refusal",
+        "parent-linked-workload-provenance",
     }
     require(set(caps.get("capabilities", [])) == allowed, "capability allowlist drift")
     require(

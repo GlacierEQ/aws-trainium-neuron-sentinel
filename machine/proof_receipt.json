@@ -4,12 +4,12 @@
   "source_sha": "126da1f2406c0a3ade9696124198bbdbe9723183c263d3c3253a3d2b1354b865",
   "proof_id": "elite-aws-trainium-neuron-sentinel-1786335149",
   "environment": {
-    "python": "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python",
-    "PYTHONPATH": "/Users/kcbflux/job-app/repos/aws-trainium-neuron-sentinel:/Users/kcbflux/job-app/repos/aws-trainium-neuron-sentinel/src",
+    "python": "${HOME}/job-app/excellence/.venv-elite/bin/python",
+    "PYTHONPATH": "${HOME}/job-app/repos/aws-trainium-neuron-sentinel:${HOME}/job-app/repos/aws-trainium-neuron-sentinel/src",
     "entry": "unittest"
   },
   "tests": [
-    "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python -m unittest discover -s tests -v (x2)"
+    "${HOME}/job-app/excellence/.venv-elite/bin/python -m unittest discover -s tests -v (x2)"
   ],
   "adversarial_tests": [
     "tests/test_adversarial.py"
